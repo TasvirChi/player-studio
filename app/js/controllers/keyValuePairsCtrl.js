@@ -1,4 +1,4 @@
-KMCMenu.controller('keyValuePairsCtrl', ['$scope',
+BMCMenu.controller('keyValuePairsCtrl', ['$scope',
 	function ($scope) {
 		$scope.keyValuePairs = [];
 		// build key/value array

@@ -1,6 +1,6 @@
-var KMCMenu = angular.module('KMCmenu', ['ui.bootstrap', 'ngSanitize', 'ui.select2', 'angularSpectrumColorpicker']);
+var BMCMenu = angular.module('BMCmenu', ['ui.bootstrap', 'ngSanitize', 'ui.select2', 'angularSpectrumColorpicker']);
 
-KMCMenu.controller('EditCtrl', ['$scope','$http', '$timeout','PlayerData','PlayerService', 'apiService', 'editableProperties', 'localStorageService','$routeParams','$modal', '$location','requestNotificationChannel', 'select2Svc', 'utilsSvc',
+BMCMenu.controller('EditCtrl', ['$scope','$http', '$timeout','PlayerData','PlayerService', 'apiService', 'editableProperties', 'localStorageService','$routeParams','$modal', '$location','requestNotificationChannel', 'select2Svc', 'utilsSvc',
 	function ($scope, $http, $timeout, PlayerData, PlayerService, apiService, editableProperties, localStorageService, $routeParams, $modal, $location, requestNotificationChannel, select2Svc, utilsSvc) {
 
 	$scope.playerData = angular.copy(PlayerData);   // get the player data
@@ -25,7 +25,7 @@ KMCMenu.controller('EditCtrl', ['$scope','$http', '$timeout','PlayerData','Playe
 			$scope.refreshPlayer();
 		},0);
 	};
-	if (window.parent.kmc && window.parent.kmc.vars.studio.showFlashStudio === false){
+	if (window.parent.bmc && window.parent.bmc.vars.studio.showFlashStudio === false){
 		$(".menuFooter").css("bottom","1px");
 	}
 	window.parent.studioDataChanged = false; // used when navigating away from studio
@@ -321,11 +321,11 @@ KMCMenu.controller('EditCtrl', ['$scope','$http', '$timeout','PlayerData','Playe
 		    $scope.refreshPlayer();
 		    return;
 	    }
-	    if (property['player-refresh'] && property['player-refresh'].indexOf(".") != -1) { // handle setKDPAttribute values
+	    if (property['player-refresh'] && property['player-refresh'].indexOf(".") != -1) { // handle setBDPAttribute values
 		    var obj = property['player-refresh'].split(".")[0];
 		    var prop = property['player-refresh'].split(".")[1];
-		    var kdp = document.getElementById('kVideoTarget');
-		    kdp.setKDPAttribute(obj, prop, property.initvalue);
+		    var bdp = document.getElementById('kVideoTarget');
+		    bdp.setBDPAttribute(obj, prop, property.initvalue);
 		    return;
 	    }
 	    if (property.model === "autoUpdate"){ // handle auto-update checkbox
@@ -415,8 +415,8 @@ KMCMenu.controller('EditCtrl', ['$scope','$http', '$timeout','PlayerData','Playe
 		}
 		delete $scope.playerData.config.enviornmentConfig;
 		angular.extend(flashvars,{'jsonConfig': angular.toJson($scope.playerData.config)}); // update the player with the new configuration
-		if (window.parent.kmc && window.parent.kmc.vars.ks){
-			angular.extend(flashvars, {'ks': window.parent.kmc.vars.ks}); // add ks if available
+		if (window.parent.bmc && window.parent.bmc.vars.ks){
+			angular.extend(flashvars, {'ks': window.parent.bmc.vars.ks}); // add ks if available
 		}
 		if ($scope.isIE8) {                      // for IE8 add transparent mode
 			angular.extend(flashvars, {'wmode': 'transparent'});

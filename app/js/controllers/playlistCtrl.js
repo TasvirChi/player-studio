@@ -1,4 +1,4 @@
-KMCMenu.controller('playlistCtrl', ['$scope', '$modal', 'utilsSvc',
+BMCMenu.controller('playlistCtrl', ['$scope', '$modal', 'utilsSvc',
 	function ($scope, $modal, utilsSvc) {
 
 		$scope.additionalPlaylists = [];

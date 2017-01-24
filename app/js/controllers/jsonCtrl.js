@@ -1,4 +1,4 @@
-KMCMenu.controller('jsonCtrl', ['$scope',
+BMCMenu.controller('jsonCtrl', ['$scope',
 	function ($scope) {
 		$scope.$on('jsonChangeEvent', function(event, mass) {
 			$scope.propertyChanged({'player-refresh':'true'}, false);

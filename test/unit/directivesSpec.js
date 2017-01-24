@@ -5,7 +5,7 @@
 describe('test directives:', function () {
     var scope, compile , element, $timeout;
     beforeEach(function () {
-            module('KMC.directives');
+            module('BMC.directives');
             module('ui.bootstrap');
             module('templates');
             module(function ($provide) {

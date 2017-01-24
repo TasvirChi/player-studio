@@ -3,11 +3,11 @@ var cl = function (val) {
     return console.log(val);
 };
 // Declare app level module which depends on filters, and services
-var KMCModule = angular.module('KMCModule',
-    ['pascalprecht.translate', 'ngRoute', 'KMC.controllers', 'KMC.filters',
-        'KMC.services', 'KMC.directives', 'ngAnimate', 'LocalStorageModule', 'KMCmenu', 'JSONedit']);
+var BMCModule = angular.module('BMCModule',
+    ['pascalprecht.translate', 'ngRoute', 'BMC.controllers', 'BMC.filters',
+        'BMC.services', 'BMC.directives', 'ngAnimate', 'LocalStorageModule', 'BMCmenu', 'JSONedit']);
 
-KMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tooltipProvider', '$translateProvider', function ($routeProvider, $locationProvider, $httpProvider, $tooltipProvider, $translateProvider) {
+BMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tooltipProvider', '$translateProvider', function ($routeProvider, $locationProvider, $httpProvider, $tooltipProvider, $translateProvider) {
         $translateProvider.useStaticFilesLoader({
             prefix: 'i18n/',
             suffix: '.json'
@@ -97,14 +97,14 @@ KMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tool
         var ksCheck = function (api, apiService, localStorageService, $location) {
             // Check if we have ks in locaclstorage
             try {
-                var kmc = window.parent.kmc;
-                if (kmc && kmc.vars) {
-                    // got ks from KMC - save to local storage
-                    if (kmc.vars.ks)
-                        localStorageService.add('ks', kmc.vars.ks);
+                var bmc = window.parent.bmc;
+                if (bmc && bmc.vars) {
+                    // got ks from BMC - save to local storage
+                    if (bmc.vars.ks)
+                        localStorageService.add('ks', bmc.vars.ks);
                 }
             } catch (e) {
-                cl('Could not located parent.kmc: ' + e);
+                cl('Could not located parent.bmc: ' + e);
             }
             var ks = localStorageService.get('ks');
             if (!ks) { //navigate to login
@@ -147,7 +147,7 @@ KMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tool
                         return  playerTemplates.listSystem();
                     }],
                     'userId': function () {
-                        return '1'; //  KMC would need to give us the userID ?
+                        return '1'; //  BMC would need to give us the userID ?
                     }
 
                 }
@@ -195,8 +195,8 @@ KMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tool
     },1000);
 
 
-    if (typeof window.parent.kmc != 'undefined') {
-        $('html').addClass('inKmc');
+    if (typeof window.parent.bmc != 'undefined') {
+        $('html').addClass('inBmc');
     }
 
     // set the logTime function used in debug mode
@@ -250,11 +250,11 @@ KMCModule.config(['$routeProvider', '$locationProvider', '$httpProvider', '$tool
             debug = false;
         }
     });
-	var kmc = window.parent.kmc;
-    if (kmc && kmc.vars.studio.showFlashStudio === false){
-        $(".kmcSubNav").hide();
+	var bmc = window.parent.bmc;
+    if (bmc && bmc.vars.studio.showFlashStudio === false){
+        $(".bmcSubNav").hide();
     }
-    if (kmc && kmc.vars.studio.showHTMLStudio === false){
+    if (bmc && bmc.vars.studio.showHTMLStudio === false){
         $("#htmlStudioBtn").hide();
     }
 

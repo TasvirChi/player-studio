@@ -1,4 +1,4 @@
-KMCMenu.controller('entrySelectorCtrl', ['$scope',
+BMCMenu.controller('entrySelectorCtrl', ['$scope',
 	function ($scope) {
 		$scope.getLabel = function(id, configObject){
 			var searchArr = configObject == "playlistSelectBox" ? $scope.userPlaylists : $scope.userEntries;

@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('KMCModule').controller('LoginCtrl',
+angular.module('BMCModule').controller('LoginCtrl',
     ['$scope', 'apiService', '$location', 'localStorageService', 'requestNotificationChannel','$filter',
         function($scope, apiService, $location, localStorageService, requestNotificationChannel,$filter) {
             requestNotificationChannel.requestEnded('list'); // if coming from list this would stop the spinner
